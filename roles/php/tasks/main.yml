@@ -1,0 +1,19 @@
+---
+# tasks file for php
+- name: Adicionar repositorio para obter o PHP 7.3
+  apt_repository:
+    repo: ppa:ondrej/php
+- name: Atualizar o cache de repositorios
+  apt:
+    update_cache: yes
+- name: Instalar o PHP 7.3
+  apt:
+    name: php7.3
+    state: present
+  notify: reiniciar Apache
+- name: Fazer upload do arquivo index.php
+  copy:
+    src: index.php
+    dest: /var/www/html
+    owner: ubuntu
+    group: ubuntu

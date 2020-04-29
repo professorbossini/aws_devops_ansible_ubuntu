@@ -1,0 +1,31 @@
+---
+# tasks file for jenkins
+- name: Baixar chave GPG
+  rpm_key:
+    state: present
+    key: http://pkg.jenkins-ci.org/redhat/jenkins-ci.org.key
+- name: Criar repositorio Jenkins
+  yum_repository:
+    name: jenkins
+    description: Repositorio Jenkins
+    baseurl: http://pkg.jenkins.io/redhat
+    enabled: yes
+    gpgcheck: yes
+- name: Instalar o Java 8
+  yum:
+    name: java-1.8.0-openjdk.x86_64
+    state: present
+- name: Instalar o Git
+  yum:
+    name: git
+    state: present
+- name: Instalar o Jenkins
+  yum:
+    name: jenkins
+    state: present
+- name: Iniciar o Jenkins e garantir que ele sobe com o so
+  service:
+    name: jenkins
+    state: started
+    enabled: yes
+

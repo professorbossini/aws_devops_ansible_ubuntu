@@ -1,0 +1,10 @@
+---
+# tasks file for apache
+- name: Desinstalar o pacote apache2
+  apt:
+    name: httpd
+    state: absent
+    purge: yes
+- name: Removendo dependencias nao mais necessarias
+  apt:
+    autoremove: yes

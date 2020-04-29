@@ -1,0 +1,6 @@
+---
+# handlers file for php
+- name: reiniciar Apache
+  service:
+    name: apache2
+    state: restarted

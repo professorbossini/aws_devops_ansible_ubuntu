@@ -1,0 +1,7 @@
+---
+# tasks file for phpunit
+- name: Baixar o PHPUnit e ajustar seu diretório
+  get_url:
+    url: https://phar.phpunit.de/phpunit-9.phar
+    dest: /usr/local/bin/phpunit
+    mode: 0555
